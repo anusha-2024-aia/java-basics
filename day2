@@ -17,3 +17,5 @@ class GFG {
         while (c < 0);
     }
 }
+
+
