@@ -55,3 +55,40 @@ public class PrimeNumberCalculator {
 // Line 48
 // Line 49
 // Line 50
+
+
+from sklearn.datasets import load_wine  # Changed from load_iris
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# Load dataset
+wine = load_wine()  # Load Wine data instead of Iris
+X = wine.data
+y = wine.target
+
+# Split dataset into train and test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
+
+# Create k-NN classifier
+knn = KNeighborsClassifier(n_neighbors=3)
+
+# Train the model
+knn.fit(X_train, y_train)
+
+# Predict test data
+y_pred = knn.predict(X_test)
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:\n", cm)
+
+# k-Fold Cross Validation
+cv_scores = cross_val_score(knn, X, y, cv=5)
+print("Cross Validation Scores:", cv_scores)
+print("Average CV Accuracy:", cv_scores.mean())
