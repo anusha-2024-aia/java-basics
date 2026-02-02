@@ -92,3 +92,52 @@ print("Confusion Matrix:\n", cm)
 cv_scores = cross_val_score(knn, X, y, cv=5)
 print("Cross Validation Scores:", cv_scores)
 print("Average CV Accuracy:", cv_scores.mean())
+
+import re
+from collections import Counter
+
+# --- 40 Lines of Code: Log Analyzer ---
+def analyze_log(file_path):
+    error_patterns = {
+        'DatabaseError': r'DB_ERR: (.*)',
+        'NetworkTimeout': r'NET_TIMEOUT: (.*)',
+        'SyntaxError': r'SYNTAX_ERR: (.*)'
+    }
+    error_counts = Counter()
+    total_lines = 0
+
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                total_lines += 1
+                for error_type, pattern in error_patterns.items():
+                    if re.search(pattern, line):
+                        error_counts[error_type] += 1
+    except FileNotFoundError:
+        return "File not found."
+
+    # Generate Summary
+    summary = []
+    summary.append("="*30)
+    summary.append("LOG ANALYSIS REPORT")
+    summary.append("="*30)
+    summary.append(f"Total Lines: {total_lines}")
+    summary.append(f"Errors Found: {sum(error_counts.values())}")
+    summary.append("-" * 30)
+    for err, count in error_counts.most_common():
+        summary.append(f"{err}: {count}")
+    summary.append("="*30)
+    
+    return "\n".join(summary)
+
+# --- Usage Example ---
+# Create a dummy log file for demonstration
+with open("app.log", "w") as f:
+    f.write("INFO: System started\n")
+    f.write("DB_ERR: Connection lost\n")
+    f.write("INFO: Retrying\n")
+    f.write("NET_TIMEOUT: Request timed out\n")
+    f.write("DB_ERR: Connection lost\n")
+
+# Run the analyzer
+print(analyze_log("app.log"))
