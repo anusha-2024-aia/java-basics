@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.List;
+
+// 1. Define a Student Class
+class Student {
+    String name;
+    int id;
+    double grade;
+
+    // Constructor
+    public Student(String name, int id, double grade) {
+        this.name = name;
+        this.id = id;
+        this.grade = grade;
+    }
+
+    // Method to display student details
+    public void display() {
+        System.out.println("ID: " + id + " | Name: " + name + " | Grade: " + grade);
+    }
+}
+
+// 2. Main class to manage students
+public class StudentManager {
+    public static void main(String[] args) {
+        // Create a list to store Student objects
+        List<Student> studentList = new ArrayList<>();
+
+        // Adding student data
+        studentList.add(new Student("Alice", 101, 92.5));
+        studentList.add(new Student("Bob", 102, 85.0));
+        studentList.add(new Student("Charlie", 103, 78.5));
+        studentList.add(new Student("David", 104, 95.0));
+
+        System.out.println("--- Student Records ---");
+        double totalGrade = 0;
+        Student topStudent = studentList.get(0);
+
+        // Loop through students to display and calculate
+        for (Student s : studentList) {
+            s.display();
+            totalGrade += s.grade;
+            
+            // Find top student
+            if (s.grade > topStudent.grade) {
+                topStudent = s;
+            }
+        }
+
+        // Calculate and print average
+        double average = totalGrade / studentList.size();
+        System.out.println("-----------------------");
+        System.out.println("Average Grade: " + average);
+        System.out.println("Top Student: " + topStudent.name + " (" + topStudent.grade + ")");
+    }
+}
