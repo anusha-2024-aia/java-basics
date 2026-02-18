@@ -1,0 +1,23 @@
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class DiverseCode {
+    public static void main(String[] args) {
+        // 1-5: Basic Types & String Manipulation
+        String title = "Java 50";
+        String lower = title.toLowerCase();
+        int len = title.length();
+        boolean starts = title.startsWith("J");
+        String sub = title.substring(0, 4);
+
+        // 6-10: Arrays & Loops
+        int[] nums = {1, 2, 3, 4, 5};
+        int sum = 0;
+        for (int n : nums) sum += n;
+        int[] reversed = new int[5];
+        for (int i = 0; i < nums.length; i++) reversed[i] = nums[4 - i];
+
+        // 11-15: Lists & Streams
+        List<String> list = Arrays.asList("apple", "banana", "cherry");
+        
