@@ -38,6 +38,21 @@ if (counter ==2)
  }
  }
 }
-Program t
+
+
+public class FindFactors {
+    public static void main(String[] args) {
+        int number = 60;
+        System.out.print("Factors of " + number + " are: ");
+        
+        // Loop from 1 to 60 to find divisors
+        for (int i = 1; i <= number; ++i) {
+            if (number % i == 0) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+
 
 
