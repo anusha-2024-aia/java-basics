@@ -1,0 +1,31 @@
+public class StringCreationExample {
+    public static void main(String[] args) {
+        // Using string literal
+        String greeting = "Hello, World!";
+        System.out.println(greeting); // Output: Hello, World!
+
+        // Using the new keyword
+        String name = new String("Java Programming");
+        System.out.println(name); // Output: Java Programming
+
+        // From a character array
+        char[] charArray = {'J', 'a', 'v', 'a'};
+        String s3 = new String(charArray);
+        System.out.println(s3); // Output: Java
+    }
+}
+
+public class StringConcatExample {
+    public static void main(String[] args) {
+        String firstName = "John";
+        String lastName = "Doe";
+
+        // Using the + operator
+        String fullName = firstName + " " + lastName;
+        System.out.println(fullName); // Output: John Doe
+
+        // Using the concat() method
+        String anotherFullName = firstName.concat(" ").concat(lastName);
+        System.out.println(anotherFullName); // Output: John Doe
+    }
+}
