@@ -10,3 +10,16 @@ public class Geeks {
         System.out.println(str);
     }
 }
+
+
+import java.io.*;
+
+class Geeks
+{
+    public static void main(String[] args)
+    {
+        String name = "Sachin";
+        name = name.concat(" Tendulkar");
+        System.out.println(name);
+    }
+}
