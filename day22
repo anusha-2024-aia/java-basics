@@ -28,3 +28,7 @@ int y = 9;
 boolean isGreater = x > y;
 
 System.out.println(isGreater); 
+
+if (20 > 18) {
+  System.out.println("20 is greater than 18");
+}
