@@ -1,0 +1,11 @@
+if (condition) {
+    // block of code to be executed if the condition is true
+}
+
+
+int time = 20;
+if (time < 18) {
+  System.out.println("Good day.");
+} else {
+  System.out.println("Good evening."); // This executes if time >= 18
+}
