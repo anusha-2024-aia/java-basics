@@ -9,3 +9,12 @@ if (time < 18) {
 } else {
   System.out.println("Good evening."); // This executes if time >= 18
 }
+
+int score = 85;
+if (score >= 90) {
+  System.out.println("Grade: A");
+} else if (score >= 80) {
+  System.out.println("Grade: B"); // Executes this and skips remaining
+} else {
+  System.out.println("Grade: C");
+}
