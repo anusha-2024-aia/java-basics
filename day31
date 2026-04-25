@@ -12,3 +12,10 @@ public class Main {
     System.out.println("2 raised to the power of 5 is: " + Math.pow(2, 5));  
   }  
 } 
+
+public class Main { // Class name must match the filename (Main.java)
+    public static void main(String[] args) {
+        // This prints text to the console
+        System.out.println("Hello, World!");
+    }
+}
