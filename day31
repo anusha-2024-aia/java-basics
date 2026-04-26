@@ -66,3 +66,93 @@ class Codechef {
         System.out.println("Luggage check completed.");
     }
 }
+
+import java.util.*;
+
+class Codechef {
+    public static void main(String[] args) {
+        String storedPassword = "Secure123";
+        int requiredClearance = 3;
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Taking user input
+        String enteredPassword = scanner.next();
+        int clearanceLevel = scanner.nextInt();
+
+        // Checking access conditions
+        if (enteredPassword.equals(storedPassword) && clearanceLevel >= requiredClearance) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied.");
+        }
+
+        System.out.println("Security check completed.");
+    }
+}
+
+import java.util.*;
+
+class Codechef {
+    public static void main(String[] args) {
+        String storedPassword = "Secure123";
+        int requiredClearance = 3;
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Taking user input
+        String enteredPassword = scanner.next();
+        int clearanceLevel = scanner.nextInt();
+
+        // Checking access conditions
+        if (enteredPassword.equals(storedPassword) && clearanceLevel >= requiredClearance) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied.");
+        }
+
+        System.out.println("Security check completed.");
+    }
+}
+
+import java.util.*;
+class Codechef {
+    public static void main(String[] args) {
+        // Declare and initialize temperature and rain status
+        int temperature = 35;
+        boolean isRaining = true;
+
+        // Check if the temperature is greater than 30 OR if it is raining
+        if (temperature > 30 || isRaining) {
+            // If either condition is true, advise to stay indoors
+            System.out.println("Stay indoors today.");
+        } else {
+            // If both conditions are false, it's safe to go outside
+            System.out.println("You can go outside.");
+        }
+
+        // Print a final message indicating the completion of the weather check
+        System.out.println("Weather advisory check completed.");
+    }
+}
+
+import java.util.*;
+class Codechef {
+    public static void main(String[] args) {
+        // Declare and initialize temperature and rain status
+        int temperature = 35;
+        boolean isRaining = true;
+
+        // Check if the temperature is greater than 30 OR if it is raining
+        if (temperature > 30 || isRaining) {
+            // If either condition is true, advise to stay indoors
+            System.out.println("Stay indoors today.");
+        } else {
+            // If both conditions are false, it's safe to go outside
+            System.out.println("You can go outside.");
+        }
+
+        // Print a final message indicating the completion of the weather check
+        System.out.println("Weather advisory check completed.");
+    }
+}
