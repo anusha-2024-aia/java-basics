@@ -8,3 +8,16 @@ public class Main {
         sayHello(); // Call
     }
 }
+
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        Calculator obj = new Calculator(); // Need object for non-static method
+        int result = obj.add(5, 10);
+        System.out.println("Sum: " + result);
+    }
+}
+
