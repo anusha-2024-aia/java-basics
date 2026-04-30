@@ -90,3 +90,14 @@ public class Geeks
         System.out.println("Substring: " + sub);
     }
 }
+
+String text = "Java Programming";
+
+// Version 1: From index 5 to the end
+String sub1 = text.substring(5); 
+// Output: "Programming"
+
+// Version 2: From index 0 to index 4 (exclusive)
+String sub2 = text.substring(0, 4); 
+// Output: "Java"
+
