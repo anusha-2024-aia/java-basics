@@ -73,3 +73,22 @@ public class Solution {
         scan.close();
     }
 }
+
+// 1. Trim to handle leading/trailing non-letters
+s = s.trim();
+
+// 2. Handle the empty string case
+if (s.isEmpty()) {
+    System.out.println(0);
+} else {
+    // 3. Split using the correct regex string
+    String[] tokens = s.split("[^A-Za-z]+");
+    
+    // 4. Print the count first
+    System.out.println(tokens.length);
+    
+    // 5. Loop and print each specific token
+    for (int i = 0; i < tokens.length; i++) {
+        System.out.println(tokens[i]);
+    }
+}
