@@ -31,3 +31,13 @@ public class Solution {
         System.out.println("France: " + france);
     }
 }
+
+class MyRegex {
+    // 1. Define a single segment (0-255)
+    // We use a group () with OR | operators
+    String zeroTo255 = "([0-9]{1,2}|(0|1)[0-9]{2}|2[0-4][0-9]|25[0-5])";
+
+    // 2. An IP is: segment . segment . segment . segment
+    // We use \\. to match the literal dot
+    public String pattern = zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255;
+}
