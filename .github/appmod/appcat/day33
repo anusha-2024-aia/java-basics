@@ -41,3 +41,35 @@ class MyRegex {
     // We use \\. to match the literal dot
     public String pattern = zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255;
 }
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // Read the entire line of input
+        String s = scan.nextLine();
+        
+        // Trim leading/trailing whitespace and check if the string is empty
+        s = s.trim();
+        if (s.length() == 0) {
+            System.out.println(0);
+        } else {
+            // Split the string using a regex that matches one or more non-alphabetic characters
+            // [^A-Za-z]+ means "any character that is NOT a letter, one or more times"
+            String[] tokens = s.split("[^A-Za-z]+");
+            
+            // Print the number of tokens
+            System.out.println(tokens.length);
+            
+            // Print each token on a new line
+            for (String token : tokens) {
+                System.out.println(token);
+            }
+        }
+        scan.close();
+    }
+}
