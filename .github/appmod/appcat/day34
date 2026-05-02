@@ -42,3 +42,13 @@ class MatcherExample {
         }
     }
 }
+
+
+import java.util.regex.Pattern;
+
+class CharClassExample {
+    public static void main(String[] args) {
+        System.out.println(Pattern.matches("[a-z]", "g"));      // true
+        System.out.println(Pattern.matches("[a-zA-Z]", "Gfg")); // false
+    }
+}
