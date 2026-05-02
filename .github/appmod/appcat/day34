@@ -1,0 +1,20 @@
+import java.util.regex.*;
+
+public class RegexExample {
+    public static void main(String[] args) {
+        // 1. Define the pattern (find any word starting with 'J')
+        String regex = "J\\w*"; 
+        
+        // 2. Compile it
+        Pattern pattern = Pattern.compile(regex);
+        
+        // 3. Create matcher for the input text
+        Matcher matcher = pattern.matcher("Java is fun and Joyful");
+        
+        // 4. Find all matches
+        while (matcher.find()) {
+            System.out.println("Found: " + matcher.group() + 
+                               " at " + matcher.start());
+        }
+    }
+}
