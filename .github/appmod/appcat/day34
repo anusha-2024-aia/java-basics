@@ -87,3 +87,46 @@ class Geeks {
         s.close();
     }
 }
+
+import java.util.Scanner;
+
+public class FibonacciSeries {
+
+    /**
+     * Generates and prints the Fibonacci series up to n terms.
+     * @param n The number of terms to generate
+     */
+    public static void generateFibonacci(int n) {
+        int firstTerm = 0;
+        int secondTerm = 1;
+
+        System.out.println("Fibonacci Series up to " + n + " terms:");
+
+        for (int i = 1; i <= n; ++i) {
+            System.out.print(firstTerm + ", ");
+
+            // Compute the next term
+            int nextTerm = firstTerm + secondTerm;
+            firstTerm = secondTerm;
+            secondTerm = nextTerm;
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 20; // Number of terms to generate
+
+        // Basic error checking
+        if (n <= 0) {
+            System.out.println("Please enter a positive integer.");
+        } else {
+            generateFibonacci(n);
+        }
+        
+        // Demonstrating a simple array traversal for additional code structure
+        System.out.println("\n\nDemonstrating Array Usage:");
+        int[] sampleArray = {1, 2, 3, 4, 5};
+        for (int val : sampleArray) {
+            System.out.print(val * 2 + " "); // Prints 2 4 6 8 10
+        }
+    }
+}
