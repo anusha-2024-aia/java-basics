@@ -1,0 +1,49 @@
+// Save as: EmployeeTest.java
+import java.util.ArrayList;
+import java.util.List;
+
+// 1. Class definition (Object Blueprint)
+class Employee {
+    private int id;
+    private String name;
+    private double salary;
+
+    // Constructor
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Getters
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public double getSalary() { return salary; }
+
+    // Method to display details
+    public void display() {
+        System.out.println("ID: " + id + ", Name: " + name + ", Salary: $" + salary);
+    }
+}
+
+public class EmployeeTest {
+    public static void main(String[] args) {
+        // 2. Creating a list of objects
+        List<Employee> empList = new ArrayList<>();
+
+        // 3. Adding 50 objects (simulated in a loop for brevity)
+        for (int i = 1; i <= 50; i++) {
+            empList.add(new Employee(i, "Employee_" + i, 3000 + (i * 100)));
+        }
+
+        // 4. Processing and displaying data
+        System.out.println("--- Employee Data ---");
+        for (Employee emp : empList) {
+            // Only print first 5 to keep console clean
+            if (emp.getId() <= 5) {
+                emp.display();
+            }
+        }
+        System.out.println("Total Employees Created: " + empList.size());
+    }
+}
