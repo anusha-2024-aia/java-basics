@@ -49,3 +49,53 @@ public class Main {
         scanner.close();
     }
 }
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter total number of students: ");
+        int totalStudents = scanner.nextInt();
+        scanner.nextLine();
+
+        String[] names = new String[totalStudents];
+        double[] scores = new double[totalStudents];
+
+        for (int i = 0; i < totalStudents; i++) {
+            System.out.print("Enter name for student " + (i + 1) + ": ");
+            names[i] = scanner.nextLine();
+            System.out.print("Enter score for " + names[i] + ": ");
+            scores[i] = scanner.nextDouble();
+            scanner.nextLine();
+        }
+
+        System.out.println("\n--- Student Records Report ---");
+        double cumulativeSum = 0;
+        double maximumScore = scores[0];
+        String topPerformer = names[0];
+
+        for (int i = 0; i < totalStudents; i++) {
+            String evaluation = (scores[i] >= 50.0) ? "Passed" : "Failed";
+            System.out.printf("Student: %-12s | Score: %5.1f | Status: %s%n", 
+                names[i], scores[i], evaluation);
+            cumulativeSum += scores[i];
+            
+            if (scores[i] > maximumScore) {
+                maximumScore = scores[i];
+                topPerformer = names[i];
+            }
+        }
+
+        double finalAverage = cumulativeSum / totalStudents;
+        System.out.println("---------------------------------");
+        System.out.printf("Class Metric Count : %d%n", totalStudents);
+        System.out.printf("Class Score Average: %.2f%n", finalAverage);
+        System.out.printf("Top Performing Peer: %s (%.1f)%n", 
+            topPerformer, maximumScore);
+        
+        System.out.println("Execution finished successfully.");
+        scanner.close();
+    }
+}
