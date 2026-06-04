@@ -96,6 +96,4 @@ public class Main {
             topPerformer, maximumScore);
         
         System.out.println("Execution finished successfully.");
-        scanner.close();
-    }
-}
+        scanner.close(
