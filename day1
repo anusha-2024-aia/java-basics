@@ -23,3 +23,44 @@ public class GFG {
         } while (c <= 5);
     }
 }
+
+import java.util.Scanner;
+
+public class MathOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number to generate its multiplication table: ");
+        int tableNumber = scanner.nextInt();
+
+        System.out.println("\n--- Multiplication Table for " + tableNumber + " ---");
+        for (int i = 1; i <= 10; i++) {
+            int result = tableNumber * i;
+            System.out.println(tableNumber + " x " + i + " = " + result);
+        }
+
+        System.out.print("\nEnter a number to check if it is prime: ");
+        int primeCheck = scanner.nextInt();
+        
+        if (isPrime(primeCheck)) {
+            System.out.println(primeCheck + " is a prime number.");
+        } else {
+            System.out.println(primeCheck + " is NOT a prime number.");
+        }
+
+        scanner.close();
+    }
+
+    // Helper method to check if a number is prime
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
