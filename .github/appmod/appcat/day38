@@ -103,3 +103,22 @@ class Solution {
         return -1;
     }
 }
+
+
+class Solution {
+    static int minNumber(int arr[], int low, int high) {
+
+        int left = low, right = high;
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] < arr[right]) {
+                right = mid;      
+            } else {
+                left = mid + 1;
+            }
+        }
+        return arr[left];
+    }
+}
