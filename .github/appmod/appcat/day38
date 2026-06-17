@@ -178,3 +178,42 @@ public class Main {
         }
     }
 }
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        
+        System.out.print("Enter an integer limit: ");
+        int limit = scanner.nextInt();
+        
+        System.out.println("\nHello, " + name + "! Generating numbers up to " + limit + ":");
+        
+        int sum = 0;
+        for (int i = 1; i <= limit; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Even number: " + i);
+            }
+            sum += i;
+        }
+        
+        System.out.println("\n--- Results ---");
+        System.out.println("Sum of numbers from 1 to " + limit + " is: " + sum);
+        
+        checkNumberSize(sum);
+        scanner.close();
+    }
+
+    public static void checkNumberSize(int total) {
+        if (total > 50) {
+            System.out.println("The total sum is larger than 50.");
+        } else {
+            System.out.println("The total sum is 50 or less.");
+        }
+    }
+}
+
