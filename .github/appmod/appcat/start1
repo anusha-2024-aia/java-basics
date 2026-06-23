@@ -27,3 +27,75 @@ public class Main
      return sum;
    }
  }
+
+// public class GCDIterative {
+//     public static int findGCD(int a, int b) {
+//         while (b != 0) {
+//             int temp = b;
+//             b = a % b;
+//             a = temp;
+//         }
+//         return a;
+//     }
+
+//     public static void main(String[] args) {
+//         int num1 = 48, num2 = 36;
+//         int gcd = findGCD(num1, num2);
+//         System.out.println("GCD of " + num1 + " and " + num2 + " is: " + gcd);
+//     }
+// }
+
+// class Main {
+//     public static void main(String[] args) {
+//         int a = 10;
+//         int b = 5;
+        
+//         // 1. Save original values before the loop changes them
+//         int num1 = a;
+//         int num2 = b;
+        
+//         while (b != 0) {
+//             int rem = a % b;
+//             a = b;
+//             b = rem;
+//         }
+        
+//         int gcd = a;
+        
+//         // 2. Use original values to calculate LCM safely
+//         int lcm = (num1 * num2) / gcd;
+        
+//         // 3. Clean up the print statement
+//         System.out.println("Num1: " + num1 + " | Num2: " + num2 + " | GCD: " + gcd + " | LCM: " + lcm);
+//     }
+// }
+
+//Java program to convert octal number to decimal number
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String args[])
+	{      
+		//scanner class object creation
+		Scanner sc = new Scanner(System.in);    
+		//input from user
+		System.out.print("Enter a octal number : ");
+		int octal = sc.nextInt();
+		//Declare variable to store decimal number  
+		int decimal = 0;
+		//Declare variable to use in power		
+		int n = 0;  
+		//writing logic for the conversion
+		while(octal != 0)
+		{
+			int temp = octal % 10;  
+			decimal += temp * Math.pow(8, n);  
+			octal = octal/10;  
+			n++;  
+		}
+		//printing result
+		System.out.println("Decimal number : "+decimal); 
+		//closing scanner class(not compulsory, but good practice)
+		sc.close();   
+	}
+}
