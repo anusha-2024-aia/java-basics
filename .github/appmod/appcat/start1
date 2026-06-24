@@ -133,3 +133,12 @@ class Main {
         }
     }
 }
+
+
+class Main {
+    public static void main(String[] args) {
+       int num = 30;
+       int res = ((num - 1) * num) / 2;
+       System.out.println(res);
+    }
+}
