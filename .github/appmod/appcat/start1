@@ -183,3 +183,9 @@ class Main{
         // Function call
         findRoots(a, b, c);
     }
+
+
+String text = "HelloJava";
+String result = text.substring(0, 5); 
+System.out.println(result); // Outputs: Hello
+    
