@@ -205,3 +205,29 @@ public class Main
     return (base * power (base, x - 1));
   }
 }
+
+//Java program to check whether the character entered by the user is an alphabet or not.
+import java.util.Scanner;
+
+//class declaration
+public class Main
+{						
+    
+    //main method declaration
+    public static void main(String[] args)
+    {										
+        char ch;
+                              
+        ch = '9';
+		
+	//condition for checking characters
+        if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+	      System.out.println("The inserted character " + ch + " is an Alphabet");
+	else
+	      System.out.println("The inserted character " + ch + " is not an Alphabet");
+		
+				                               
+	
+    } //end of the main method
+    
+} //end of the class
