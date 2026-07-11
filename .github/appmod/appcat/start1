@@ -249,3 +249,18 @@ public class Main {
         System.out.println("Largest in given array is " + largest());
     }
 }
+
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        char ch = 'A';
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U'){
+            System.out.println("Vowels");
+        } else {
+            System.out.println("Consonants");
+        }
+        
+       
+    }
+}
