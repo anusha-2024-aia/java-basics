@@ -330,3 +330,11 @@ public static void main(String[] args) {
      System.out.println(s);
    }
 }
+
+class Main {
+    public static void main(String[] args) {
+        String str = "Hello";
+        String rev_word = new StringBuilder(str).reverse().toString();
+        System.out.println(rev_word);
+    }
+}
