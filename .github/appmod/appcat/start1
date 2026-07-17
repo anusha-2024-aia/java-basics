@@ -439,4 +439,25 @@ public class Pattern1 {
 	        } 
 	}
 
-}     
+}
+
+def findMinMoves(servers):
+    total_tasks = sum(servers)
+    n = len(servers)
+    
+    # If tasks cannot be split evenly, it's impossible
+    if total_tasks % n != 0:
+        return -1
+        
+    target = total_tasks // n
+    max_moves = 0
+    running_balance = 0
+    
+    for tasks in servers:
+        # Tally the current net surplus or deficit
+        running_balance += tasks - target
+        
+        # Track the maximum bottleneck encountered
+        max_moves = max(max_moves, abs(running_balance), tasks - target)
+        
+    return max_moves
