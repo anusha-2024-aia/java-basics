@@ -1,0 +1,92 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.Scanner; // 1. Necessary import for user input
+
+class Main { 
+    public static void main(String[] args) { 
+        // 2. Initialize the Scanner object
+        Scanner scan = new Scanner(System.in); 
+        
+        // 3. Read the array size from user first
+        int n = scan.nextInt(); 
+        
+        // 4. Declare and create the array with size n
+        int[] arr = new int[n]; 
+        
+        // 5. Populate the array with elements
+        for(int i = 0; i < n; i++){ 
+            arr[i] = scan.nextInt(); 
+        } 
+        
+        // 6. Print the array elements in reverse order with spacing
+        for (int i = n - 1; i >= 0; i--){ 
+            System.out.print(arr[i] + " "); 
+        } 
+        
+        // Close the scanner resource
+        scan.close();
+    } 
+}
+
+
+//Sorting hald array in ascending and descending order
+
+import java.util.Arrays;
+//sorting in half in ascending order and descending order
+class Main{
+    
+        static void printOrder(int[] arr, int n){
+            Arrays.sort(arr);
+            for(int i=0; i<n/2; i++){
+                System.out.print(arr[i]);
+            }
+            for(int j=n-1; j>=n/2; j--){
+                System.out.print(arr[j]);
+            }
+        }
+        public static void main(String[] args){
+            int[] arr = {9,2,4,6,1,4};
+            int n = arr.length;
+            printOrder(arr, n);
+            
+        }
+    
+}
+
+import java.util.Arrays; // 1. Necessary import for Arrays.fill
+
+class Main {
+    static void countFreq(int[] arr, int n) {
+        boolean[] visited = new boolean[n];
+        Arrays.fill(visited, false);
+
+        // 2. Main logic safely placed inside the method
+        for (int i = 0; i < n; i++) {
+            // Skip this element if it has already been counted
+            if (visited[i]) {
+                continue;
+            }
+
+            int count = 1;
+            // 3. Fixed loop condition to 'j < n' to prevent infinite loop
+            for (int j = i + 1; j < n; j++) { 
+                if (arr[i] == arr[j]) {
+                    visited[j] = true;
+                    count++;
+                }
+            }
+            
+            // 4. Added print statement to show results
+            if(count != 1){
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {9, 8, 9, 2, 3, 4, 2}; // 5. Added missing semicolon
+        int n = arr.length;
+        countFreq(arr, n);
+    }
+} // 6. Removed the extra hanging bracket

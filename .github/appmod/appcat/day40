@@ -1,0 +1,32 @@
+// 1.Spiral printing 
+//  0/P
+//  4444444
+//  4333334
+//  4322234
+//  4321234
+//  4322234
+//  4333334
+//  4444444
+
+class Main {
+    public static void main(String[] args) {
+        int n = 4;
+        int size = 2 * n - 1;
+        
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
+                    n = 4;
+                } else if (i == 1 || i == size - 2 || j == 1 || j == size - 2) {
+                    n = 3;
+                } else if (i == 2 || i == size - 3 || j == 2 || j == size - 3) {
+                    n = 2;
+                } else {
+                    n = 1;
+                }
+                System.out.print(n);
+            }
+            System.out.println(); 
+    }
+}
+
