@@ -130,3 +130,37 @@ public class FibonacciSeries {
         }
     }
 }
+
+
+// Online Java Compiler
+class Main {
+    public static void main(String[] args) {
+        int n = 4;
+        
+        // 1. Upper half of the diamond (including the center line)
+        for (int i = 1; i <= n; i++) {
+            // Print decreasing spaces
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // Print increasing asterisks
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        
+        // 2. Lower half of the diamond
+        for (int i = n - 1; i >= 1; i--) {
+            // Print increasing spaces
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // Print decreasing asterisks
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
