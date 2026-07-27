@@ -273,3 +273,20 @@ public class StringReverser {
         System.out.println("Reversed: " + reverse(original));
     }
 }
+
+
+public class NumberCheck {
+    public static void main(String[] args) {
+        int a = 15;
+        int b = 20;
+        int sum = a + b;
+
+        System.out.println("The sum is: " + sum);
+
+        if (sum > 30) {
+            System.out.println("The sum is greater than 30.");
+        } else {
+            System.out.println("The sum is 30 or less.");
+        }
+    }
+}
