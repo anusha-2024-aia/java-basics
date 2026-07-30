@@ -395,3 +395,35 @@ public class Calculator {
         System.out.println("The sum of the numbers is: " + sum);
     }
 }
+
+public class FunctionExamples {
+
+    // 1. No input, no output (void)
+    public static void greet() {
+        System.out.println("Hello, Welcome to Java!");
+    }
+
+    // 2. Taking inputs (parameters) and returning an output
+    public static int add(int a, int b) {
+        return a + b; // Must match the 'int' return type
+    }
+
+    // 3. Instance method (requires an object to be called)
+    public boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        // Calling a static method directly
+        greet(); 
+
+        // Calling a static method with inputs and saving the result
+        int sum = add(10, 25);
+        System.out.println("Sum: " + sum);
+
+        // Calling an instance method requires creating an object first
+        FunctionExamples exampleObj = new FunctionExamples();
+        boolean checkEven = exampleObj.isEven(4);
+        System.out.println("Is 4 even? " + checkEven);
+    }
+}
