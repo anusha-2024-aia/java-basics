@@ -371,3 +371,27 @@ public class Main {
         car2.drive(); // Outputs: The Blue Tesla is driving.
     }
 }
+
+
+public class Calculator {
+
+    // 1. A method that takes parameters and returns a value
+    public static int add(int number1, int number2) {
+        return number1 + number2;
+    }
+
+    // 2. A method that takes a parameter but does not return a value (void)
+    public static void printWelcomeMessage(String name) {
+        System.out.println("Hello, " + name + "! Welcome to the Java program.");
+    }
+
+    // 3. The main method where program execution begins
+    public static void main(String[] args) {
+        // Calling the void method
+        printWelcomeMessage("Alice");
+
+        // Calling the method that returns an integer
+        int sum = add(15, 25);
+        System.out.println("The sum of the numbers is: " + sum);
+    }
+}
