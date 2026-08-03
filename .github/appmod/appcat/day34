@@ -459,3 +459,13 @@ public class FunctionExamples {
         System.out.println("Is 4 even? " + checkEven);
     }
 }
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Loops from 1 up to 5
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Count: " + i);
+        }
+    }
+}
