@@ -481,3 +481,43 @@ public class Main {
         System.out.println("The sum is: " + sum);
     }
 }
+
+
+public class MethodExample {
+
+    // 1. A static method (can be called directly without creating an object)
+    public static void printStaticMessage() {
+        System.out.println("Hello from a static method!");
+    }
+
+    // 2. A non-static method (requires creating an object instance first)
+    public void printInstanceMessage() {
+        System.out.println("Hello from an instance method!");
+    }
+
+    // 3. A method that accepts parameters and returns a value
+    public int addNumbers(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    public static void main(String[] args) {
+        
+        // --- CALLING A STATIC METHOD ---
+        // Call it directly using its name because main() is also static
+        printStaticMessage(); 
+
+        
+        // --- CALLING A NON-STATIC (INSTANCE) METHOD ---
+        // First, you must create an object instance of the class
+        MethodExample myObject = new MethodExample();
+        
+        // Then, call the method using the object variable and a dot (.)
+        myObject.printInstanceMessage();
+
+
+        // --- CALLING A METHOD WITH ARGUMENTS & RETURN VALUE ---
+        // Pass values inside the parentheses and save the result in a variable
+        int sum = myObject.addNumbers(5, 10);
+        System.out.println("The sum is: " + sum);
+    }
+}
