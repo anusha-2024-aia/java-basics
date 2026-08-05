@@ -53,3 +53,49 @@ public class Main {
 }
 
 // Outputs "I just got executed!"
+
+
+import java.util.*;
+
+class Solution {
+     
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        
+        // 1. Sort the Array
+        Arrays.sort(nums);
+        
+        for (int i = 0; i < nums.length - 2; i++) {
+            // 2. Correct duplicate skipping for the anchor 'i'
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            
+            // 3. Set your target to the inverse of the anchor
+            int left = i + 1;
+            int right = nums.length - 1;
+            int target = -nums[i]; 
+            
+            // 4. Use a while loop instead of an if statement
+            while (left < right) {
+                int currentSum = nums[left] + nums[right];
+                
+                if (currentSum == target) {
+                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    
+                    // 5. Correctly check adjacent elements to skip duplicates
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    
+                    left++;
+                    right--;        
+                } else if (currentSum < target) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return res; // 6. Returned the correct variable name
+    }
+}
