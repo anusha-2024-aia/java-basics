@@ -213,3 +213,41 @@ public class Main {
         scanner.close();
     }
 }
+
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        String testWord = "Radar";
+        
+        // Call the boolean method and print the result
+        boolean isPalindromeResult = isPalindrome(testWord);
+        System.out.println("Is \"" + testWord + "\" a palindrome? " + isPalindromeResult);
+    }
+
+    /**
+     * Checks if a string is a palindrome.
+     * @return boolean (true if palindrome, false otherwise)
+     */
+    public static boolean isPalindrome(String text) {
+        if (text == null) {
+            return false;
+        }
+        
+        // Convert to lowercase to ignore case sensitivity (e.g., 'R' vs 'r')
+        String cleanText = text.toLowerCase();
+        
+        int left = 0;
+        int right = cleanText.length() - 1;
+        
+        // Compare characters moving toward the center
+        while (left < right) {
+            if (cleanText.charAt(left) != cleanText.charAt(right)) {
+                return false; // Found a mismatch, definitely not a palindrome
+            }
+            left++;
+            right--;
+        }
+        
+        return true; // All characters matched
+    }
+}
