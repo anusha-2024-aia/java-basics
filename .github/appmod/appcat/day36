@@ -346,3 +346,19 @@ class Solution {
     }
     
 };
+
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            // If we find the target OR a number larger than the target,
+            // 'i' is the exact spot where our target belongs!
+            if (nums[i] >= target) {
+                return i; 
+            }
+        }
+        // If the target is larger than every number in the array,
+        // it belongs at the very end.
+        return nums.length;
+    }
+}
