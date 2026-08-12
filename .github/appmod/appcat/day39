@@ -35,3 +35,51 @@ public class Variables {
         System.out.println("Status: " + isJavaFun);
     }
 }
+
+
+
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+
+        // A mountain must have at least 3 elements
+        if (arr.length < 3) {
+            return false;
+        }
+
+        int i = 0;
+
+        // Increasing part
+        for (; i < arr.length - 1; i++) {
+
+            if (arr[i] > arr[i + 1]) {
+                i++;
+                break;
+            }
+
+            else if (arr[i] == arr[i + 1]) {
+                return false;
+            }
+        }
+
+        // Decreasing part
+        for (; i < arr.length; i++) {
+
+            if (arr[i - 1] <= arr[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+/*
+Expected:
+
+[2, 1]             → false
+[1, 2]             → false
+[1, 2, 1]          → true
+[0, 2, 3, 4, 5, 2, 1, 0] → true
+[0, 2, 2, 1]        → false
+[0, 2, 3, 2, 4]     → false
+*/
