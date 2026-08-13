@@ -83,3 +83,16 @@ Expected:
 [0, 2, 2, 1]        → false
 [0, 2, 3, 2, 4]     → false
 */
+
+
+public class Main {
+    // Method Definition
+    public static void displayMessage() {
+        System.out.println("Hello, Welcome to Java!");
+    }
+
+    public static void main(String[] args) {
+        displayMessage(); // Calling the method
+    }
+}
+
