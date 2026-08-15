@@ -465,3 +465,30 @@ Expected:
 [0, 2, 2, 1]        → false
 [0, 2, 3, 2, 4]     → false
 */
+
+
+import java.util.Arrays; 
+
+class Main { 
+    public static void main(String[] args) { 
+        int[] arr = {9, 3, 4, 6, 4, 9}; 
+        
+        // 1. Sort the array so duplicates sit next to each other
+        Arrays.sort(arr); // Array becomes: {3, 4, 4, 6, 9, 9}
+        
+        // 2. Traverse and count frequencies
+        for (int i = 0; i < arr.length; i++) { 
+            int count = 1; // Start counting the current element
+            
+            // Check consecutive duplicate elements
+            while (i < arr.length - 1 && arr[i] == arr[i + 1]) { 
+                count++; 
+                i++; // Skip the duplicate element
+            } 
+            
+            System.out.println(arr[i] + " occurs " + count + " time(s)"); 
+        } 
+    } 
+}
+
+
