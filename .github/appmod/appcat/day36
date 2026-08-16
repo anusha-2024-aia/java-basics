@@ -491,4 +491,18 @@ class Main {
     } 
 }
 
+public class Main {
+    // 1. Define a static method
+    public static void greet() {
+        System.out.println("Hello from the static method!");
+    }
+
+    public static void main(String[] args) {
+        // 2. Call the static method directly by its name
+        greet(); 
+        
+        // Alternatively, you can call it using the Class name:
+        // Main.greet();
+    }
+}
 
