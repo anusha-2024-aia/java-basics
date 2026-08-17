@@ -18,3 +18,18 @@ class RightTriangleRecursive {
         printTriangle(1, n);
     }
 }
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Calling a static method inside the same class
+        sayHello(); 
+
+        // 2. Calling a static method from another class (e.g., Math library)
+        double randomNum = Math.random(); 
+    }
+
+    public static void sayHello() {
+        System.out.println("Hello from a static method!");
+    }
+}
