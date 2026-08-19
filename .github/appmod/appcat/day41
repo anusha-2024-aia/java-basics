@@ -38,3 +38,23 @@ public class Main {
 int number = 5;
 int square = number * number; // 25
 System.out.println("Square: " + square);
+
+
+class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            // 1. Print the leading spaces
+            for (int j = n - i; j >= 1; j--) {
+                System.out.print(" ");
+            }
+            // 2. Print the odd number of stars for the pyramid row
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("*");
+            }
+            // 3. Move to the next line
+            System.out.println();
+        }
+    }
+}
+
