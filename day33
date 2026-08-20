@@ -1,0 +1,21 @@
+// Day 33 - Java String Methods & Operations
+
+public class Day33 {
+    public static void main(String[] args) {
+        String str = "Java Programming";
+
+        // String Length
+        System.out.println("Length: " + str.length());
+
+        // Upper and Lower case
+        System.out.println("Upper Case: " + str.toUpperCase());
+        System.out.println("Lower Case: " + str.toLowerCase());
+
+        // Contains check
+        System.out.println("Contains 'Java': " + str.contains("Java"));
+
+        // Replace characters
+        String updatedStr = str.replace('a', 'o');
+        System.out.println("Replaced String: " + updatedStr);
+    }
+}
