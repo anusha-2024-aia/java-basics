@@ -73,3 +73,16 @@ class GFG {
         System.out.println(largest + " is the largest number.");
     }
 }
+
+
+public static int niven(int n) {
+    int original = n;
+    int sum = 0;
+
+    while (n > 0) {
+        sum += n % 10;
+        n = n / 10;
+    }
+
+    return original / sum;
+}
