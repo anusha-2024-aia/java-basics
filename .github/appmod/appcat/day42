@@ -86,3 +86,57 @@ public static int niven(int n) {
 
     return original / sum;
 }
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class NumberAnalyzer {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("=== Welcome to the Java Number Analyzer ===");
+        System.out.print("Enter a positive integer to analyze: ");
+        
+        try {
+            int number = Integer.parseInt(scanner.nextLine().trim());
+            
+            if (number <= 0) {
+                System.out.println("Error: Please enter a number greater than 0.");
+                return;
+            }
+            
+            analyzeNumber(number);
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Error: That is not a valid integer.");
+        } finally {
+            scanner.close();
+            System.out.println("===========================================");
+        }
+    }
+
+    public static void analyzeNumber(int num) {
+        ArrayList<Integer> factors = new ArrayList<>();
+        int count = 0;
+
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                factors.add(i);
+                count++;
+            }
+        }
+
+        System.out.println("\n--- Analysis Results ---");
+        System.out.println("Number evaluated: " + num);
+        System.out.println("Total factors found: " + count);
+        System.out.println("List of factors: " + factors);
+
+        if (count == 2) {
+            System.out.println("Classification: " + num + " is a PRIME number.");
+        } else if (num == 1) {
+            System.out.println("Classification: 1 is neither prime nor composite.");
+        } else {
+            System.out.println("Classification: " + num + " is a COMPOSITE number.");
+        }
+    }
+}
