@@ -38,3 +38,49 @@ class Solution {
         
     }
 }
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Asset {
+    private String title;
+    public Asset(String title) {
+        this.title = title;
+    }
+    public String getTitle() {
+        return title;
+    }
+}
+
+class Book extends Asset {
+    private String writer;
+    public Book(String title, String writer) {
+        super(title);
+        this.writer = writer;
+    }
+    public String getWriter() {
+        return writer;
+    }
+}
+
+public class LibraryManager {
+    public static void main(String[] args) {
+        List<Book> shelf = new ArrayList<>();
+        shelf.add(new Book("The Hobbit", "J.R.R. Tolkien"));
+        shelf.add(new Book("1984", "George Orwell"));
+        shelf.add(new Book("Dracula", "Bram Stoker"));
+        System.out.println("--- Library Catalog ---");
+        int count = 0;
+        for (Book book : shelf) {
+            count++;
+            System.out.print("Item " + count + ": ");
+            if (book.getTitle().equals("1984")) {
+                System.out.println("[RESERVED] " + book.getTitle());
+            } else {
+                System.out.println(book.getTitle() + " by " + book.getWriter());
+            }
+        }
+        System.out.println("Total active items: " + count);
+    }
+}
