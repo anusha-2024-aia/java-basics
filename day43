@@ -42,3 +42,49 @@ public class LibraryManager {
         System.out.println("Total active items: " + count);
     }
 }
+
+
+import java.util.Arrays;
+import java.util.List;
+
+interface Discount {
+    double apply(double price);
+}
+
+class Product {
+    private String name;
+    private double cost;
+    public Product(String name, double cost) {
+        this.name = name;
+        this.cost = cost;
+    }
+    public String getName() {
+        return name;
+    }
+    public double getCost() {
+        return cost;
+    }
+}
+
+public class OrderProcessor {
+    public static void main(String[] args) {
+        List<Product> cart = Arrays.asList(
+            new Product("Laptop", 1200.0),
+            new Product("Mouse", 25.0),
+            new Product("Keyboard", 80.0),
+            new Product("Monitor", 300.0)
+        );
+        Discount promo = price -> price * 0.90;
+        System.out.println("Processing eligible items over $50...");
+        double grandTotal = cart.stream()
+            .filter(item -> item.getCost() > 50.0)
+            .mapToDouble(item -> {
+                double salePrice = promo.apply(item.getCost());
+                System.out.printf("- %s: Regular $%.2f -> Sale $%.2f%n", 
+                    item.getName(), item.getCost(), salePrice);
+                return salePrice;
+            })
+            .sum();
+        System.out.printf("Final Order Total: $%.2f%n", grandTotal);
+    }
+}
