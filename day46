@@ -241,3 +241,52 @@ class Solution {
         
     }
 }
+
+import java.util.HashMap;
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+
+        // FREQUENCY
+        // Character → how many times it appears
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        // LEFT pointer
+        int left = 0;
+
+        // Answer
+        int maxLength = 0;
+
+        // RIGHT pointer moves forward
+        for (int right = 0; right < s.length(); right++) {
+
+            // Get current character
+            char ch = s.charAt(right);
+
+            // FREQUENCY: add right character
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+            // INVALID CONDITION:
+            // current character appeared more than once
+            while (map.get(ch) > 1) {
+
+                // Get left character
+                char leftChar = s.charAt(left);
+
+                // FREQUENCY: remove left character
+                map.put(leftChar, map.get(leftChar) - 1);
+
+                // Move left
+                left++;
+            }
+
+            // Window is valid → update answer
+            maxLength = Math.max(
+                maxLength,
+                right - left + 1
+            );
+        }
+
+        return maxLength;
+    }
+}
