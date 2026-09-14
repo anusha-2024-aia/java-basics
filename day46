@@ -290,3 +290,158 @@ class Solution {
         return maxLength;
     }
 }
+
+
+// Every Java program must be written inside a class.
+// The class name must exactly match the file name (e.g., Main.java).
+public class Main {
+    
+    // The main method is the mandatory entry point for any Java application.
+    public static void main(String[] args) {
+        
+        // Prints the text to the console and moves to a new line.
+        System.out.println("Hello, World!");
+    }
+}
+
+
+
+class Solution {
+    public int longestKSubstr(String s, int k) {
+
+        int[] count = new int[26];
+
+        int left = 0;
+        int maxLength = -1;
+        int distinct = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+
+            // Add right character
+            int rightIndex = s.charAt(right) - 'a';
+            count[rightIndex]++;
+
+            // New distinct character
+            if (count[rightIndex] == 1) {
+                distinct++;
+            }
+
+            // Too many distinct characters
+            while (distinct > k) {
+
+                int leftIndex = s.charAt(left) - 'a';
+                count[leftIndex]--;
+
+                // Character completely removed
+                if (count[leftIndex] == 0) {
+                    distinct--;
+                }
+
+                left++;
+            }
+
+            // Exactly k distinct characters
+            if (distinct == k) {
+
+                int currentLength = right - left + 1;
+
+                maxLength = Math.max(maxLength, currentLength);
+            }
+        }
+
+        return maxLength;
+    }
+}
+
+class Solution {
+    public long maximumSubarraySum(int[] nums, int k) {
+
+        int[] frequency = new int[100001];
+
+        long sum = 0;
+        long maxSum = 0;
+
+        int distinct = 0;
+
+        for (int right = 0; right < nums.length; right++) {
+
+            // Add right element
+            sum += nums[right];
+
+            if (frequency[nums[right]] == 0) {
+                distinct++;
+            }
+
+            frequency[nums[right]]++;
+
+            // Keep window size k
+            if (right >= k) {
+
+                sum -= nums[right - k];
+
+                frequency[nums[right - k]]--;
+
+                if (frequency[nums[right - k]] == 0) {
+                    distinct--;
+                }
+            }
+
+            // Window has exactly k elements
+            if (right >= k - 1) {
+
+                if (distinct == k) {
+                    maxSum = Math.max(maxSum, sum);
+                }
+            }
+        }
+
+        return maxSum;
+    }
+}
+
+
+class Solution {
+    public long maximumSubarraySum(int[] nums, int k) {
+
+        int[] frequency = new int[100001];
+
+        long sum = 0;
+        long maxSum = 0;
+
+        int distinct = 0;
+
+        for (int right = 0; right < nums.length; right++) {
+
+            // Add right element
+            sum += nums[right];
+
+            if (frequency[nums[right]] == 0) {
+                distinct++;
+            }
+
+            frequency[nums[right]]++;
+
+            // Keep window size k
+            if (right >= k) {
+
+                sum -= nums[right - k];
+
+                frequency[nums[right - k]]--;
+
+                if (frequency[nums[right - k]] == 0) {
+                    distinct--;
+                }
+            }
+
+            // Window has exactly k elements
+            if (right >= k - 1) {
+
+                if (distinct == k) {
+                    maxSum = Math.max(maxSum, sum);
+                }
+            }
+        }
+
+        return maxSum;
+    }
+}
