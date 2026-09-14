@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="dashboard">
+    <div class="panel">
+      <p class="label">System Status</p>
+      <div class="status-row">
+        <div class="status-light" aria-label="Green status light blinking"></div>
+        <span class="status-text">Operational</span>
+      </div>
+      <div class="stats">
+        <div>
+          <span class="small-label">CPU</span>
+          <strong>28%</strong>
+        </div>
+        <div>
+          <span class="small-label">Memory</span>
+          <strong>64%</strong>
+        </div>
+        <div>
+          <span class="small-label">Network</span>
+          <strong>Healthy</strong>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

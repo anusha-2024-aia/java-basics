@@ -1,0 +1,45 @@
+class Solution {
+    public long maximumSubarraySum(int[] nums, int k) {
+
+        int[] frequency = new int[100001];
+
+        long sum = 0;
+        long maxSum = 0;
+
+        int distinct = 0;
+
+        for (int right = 0; right < nums.length; right++) {
+
+            // Add right element
+            sum += nums[right];
+
+            if (frequency[nums[right]] == 0) {
+                distinct++;
+            }
+
+            frequency[nums[right]]++;
+
+            // Keep window size k
+            if (right >= k) {
+
+                sum -= nums[right - k];
+
+                frequency[nums[right - k]]--;
+
+                if (frequency[nums[right - k]] == 0) {
+                    distinct--;
+                }
+            }
+
+            // Window has exactly k elements
+            if (right >= k - 1) {
+
+                if (distinct == k) {
+                    maxSum = Math.max(maxSum, sum);
+                }
+            }
+        }
+
+        return maxSum;
+    }
+}
