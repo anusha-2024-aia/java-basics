@@ -1,0 +1,74 @@
+import java.util.Arrays;
+
+class Solution {
+    public long maxProduct(int[] arr, int k) {
+        int n = arr.length;
+        Arrays.sort(arr); // Sort to group large negatives and large positives
+        
+        long product = 1;
+        int left = 0;
+        int right = n - 1;
+        
+        // Handle odd window sizes
+        if (k % 2 != 0) {
+            if (arr[right] <= 0) {
+                // If all remaining numbers are negative/zero, take from the far right
+                for (int i = n - 1; i >= n - k; i--) {
+                    product *= arr[i];
+                }
+                return product;
+            } else {
+                // Take the largest positive number, turn K into an even number
+                product *= arr[right];
+                right--;
+                k--;
+            }
+        }
+        
+        // Handle even window sizes by comparing pairs from left and right ends
+        while (k > 0) {
+            long leftProduct = (long) arr[left] * arr[left + 1];
+            long rightProduct = (long) arr[right] * arr[right - 1];
+            
+            if (leftProduct > rightProduct) {
+                product *= leftProduct;
+                left += 2;
+            } else {
+                product *= rightProduct;
+                right -= 2;
+            }
+            k -= 2;
+        }
+        
+        return product;
+    }
+}
+class Solution {
+    ArrayList<Integer> countDistinct(int arr[], int k) {
+        // code here
+        ArrayList<Integer> res = new ArrayList<>();
+        int left = 0;
+       
+        int[] frequency = new int[100001];
+        int distinct = 0;
+       for(int right= 0; right < arr.length; right++){
+           frequency[arr[right]]++;
+       
+           if(frequency[arr[right]] == 1){
+              distinct++;
+           }
+           
+            
+            if((right - left + 1) == k){
+                res.add(distinct);
+            
+                frequency[arr[left]]--;
+                if(frequency[arr[left]] == 0){
+                   distinct--;
+                }
+                left++;
+            }
+       }
+       return res;
+    }
+}
