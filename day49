@@ -67,3 +67,40 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+    public ArrayList<Integer> maxOfSubarrays(int[] arr, int k) {
+
+        ArrayList<Integer> res = new ArrayList<>();
+        Deque<Integer> deque = new LinkedList<>();
+
+        int left = 0;
+
+        for (int right = 0; right < arr.length; right++) {
+
+            // Add current element
+            while (!deque.isEmpty() && arr[deque.peekLast()] <= arr[right]) {
+                deque.pollLast();
+            }
+            deque.addLast(right);
+
+            // Window size becomes K
+            if (right - left + 1 == k) {
+
+                // First element in deque is maximum
+                res.add(arr[deque.peekFirst()]);
+
+                // Remove left element if it is in deque
+                if (!deque.isEmpty() && deque.peekFirst() == left) {
+                    deque.pollFirst();
+                }
+
+                // Move window
+                left++;
+            }
+        }
+
+        return res;
+    }
+}
