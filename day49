@@ -104,3 +104,11 @@ class Solution {
         return res;
     }
 }
+
+// Save this code in a file named Main.java
+public class Main {
+    public static void main(String[] args) {
+        // This prints text to the screen
+        System.out.println("Hello, World!");
+    }
+}
