@@ -1,0 +1,369 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class Product {
+    private int id;
+    private String name;
+    private int quantity;
+    private double price;
+
+    public Product(int id, String name, int quantity, double price) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public int getQuantity() { return quantity; }
+    public double getPrice() { return price; }
+
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setPrice(double price) { this.price = price; }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %-4d | Name: %-15s | Qty: %-5d | Price: $%.2f", 
+                id, name, quantity, price);
+    }
+}
+
+public class InventoryManagementSystem {
+    private static final ArrayList<Product> inventory = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static int idCounter = 101;
+
+    public static void main(String[] args) {
+        // Pre-populating inventory with some dummy sample data
+        inventory.add(new Product(idCounter++, "Laptop", 10, 899.99));
+        inventory.add(new Product(idCounter++, "Smartphone", 25, 499.99));
+        inventory.add(new Product(idCounter++, "Headphones", 50, 79.50));
+
+        System.out.println("=== Welcome to the Inventory Management System ===");
+        
+        while (true) {
+            displayMenu();
+            int choice = getValidInteger("Select an option (1-5): ");
+
+            switch (choice) {
+                case 1 -> addProduct();
+                case 2 -> viewInventory();
+                case 3 -> updateStock();
+                case 4 -> removeProduct();
+                case 5 -> {
+                    System.out.println("\nExiting system. Thank you!");
+                    scanner.close();
+                    System.exit(0);
+                }
+                default -> System.out.println("Invalid option! Please choose between 1 and 5.");
+            }
+        }
+    }
+
+    private static void displayMenu() {
+        System.out.println("\n---------------------------------");
+        System.out.println("1. Add New Product");
+        System.out.println("2. View All Products");
+        System.out.println("3. Update Product Stock / Price");
+        System.out.println("4. Delete a Product");
+        System.out.println("5. Exit Application");
+        System.out.println("---------------------------------");
+    }
+
+    private static void addProduct() {
+        System.out.print("\nEnter product name: ");
+        String name = scanner.nextLine().trim();
+        if (name.isEmpty()) {
+            System.out.println("Error: Product name cannot be blank.");
+            return;
+        }
+
+        int quantity = getValidInteger("Enter product quantity: ");
+        if (quantity < 0) {
+            System.out.println("Error: Quantity cannot be negative.");
+            return;
+        }
+
+        double price = getValidDouble("Enter product price: $");
+        if (price < 0) {
+            System.out.println("Error: Price cannot be negative.");
+            return;
+        }
+
+        Product newProduct = new Product(idCounter++, name, quantity, price);
+        inventory.add(newProduct);
+        System.out.println("Success: Product added matching ID " + newProduct.getId());
+    }
+
+    private static void viewInventory() {
+        System.out.println("\n================ Current Inventory ================");
+        if (inventory.isEmpty()) {
+            System.out.println("The inventory is currently empty.");
+        } else {
+            for (Product p : inventory) {
+                System.out.println(p);
+            }
+        }
+        System.out.println("===================================================");
+    }
+
+    private static void updateStock() {
+        int id = getValidInteger("\nEnter the Product ID to update: ");
+        Product product = findProductById(id);
+
+        if (product == null) {
+            System.out.println("Error: Product ID not found.");
+            return;
+        }
+
+        System.out.println("Updating details for: " + product.getName());
+        int newQty = getValidInteger("Enter new quantity: ");
+        double newPrice = getValidDouble("Enter new price: $");
+
+        if (newQty >= 0 && newPrice >= 0) {
+            product.setQuantity(newQty);
+            product.setPrice(newPrice);
+            System.out.println("Success: Product details updated successfully.");
+        } else {
+            System.out.println("Error: Values cannot be negative. Update aborted.");
+        }
+    }
+
+    private static void removeProduct() {
+        int id = getValidInteger("\nEnter the Product ID to remove: ");
+        Product product = findProductById(id);
+
+        if (product == null) {
+            System.out.println("Error: Product ID not found.");
+            return;
+        }
+
+        inventory.remove(product);
+        System.out.println("Success: '" + product.getName() + "' has been deleted.");
+    }
+
+    private static Product findProductById(int id) {
+        for (Product p : inventory) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    private static int getValidInteger(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                int value = scanner.nextInt();
+                scanner.nextLine(); // Clear scanner buffer
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a whole number.");
+                scanner.nextLine(); // Clear incorrect token
+            }
+        }
+    }
+
+    private static double getValidDouble(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                double value = scanner.nextDouble();
+                scanner.nextLine(); // Clear scanner buffer
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a valid decimal number.");
+                scanner.nextLine(); // Clear incorrect token
+            }
+        }
+    }
+}
+
+
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class Product {
+    private int id;
+    private String name;
+    private int quantity;
+    private double price;
+
+    public Product(int id, String name, int quantity, double price) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public int getQuantity() { return quantity; }
+    public double getPrice() { return price; }
+
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setPrice(double price) { this.price = price; }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %-4d | Name: %-15s | Qty: %-5d | Price: $%.2f", 
+                id, name, quantity, price);
+    }
+}
+
+public class InventoryManagementSystem {
+    private static final ArrayList<Product> inventory = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static int idCounter = 101;
+
+    public static void main(String[] args) {
+        // Pre-populating inventory with some dummy sample data
+        inventory.add(new Product(idCounter++, "Laptop", 10, 899.99));
+        inventory.add(new Product(idCounter++, "Smartphone", 25, 499.99));
+        inventory.add(new Product(idCounter++, "Headphones", 50, 79.50));
+
+        System.out.println("=== Welcome to the Inventory Management System ===");
+        
+        while (true) {
+            displayMenu();
+            int choice = getValidInteger("Select an option (1-5): ");
+
+            switch (choice) {
+                case 1 -> addProduct();
+                case 2 -> viewInventory();
+                case 3 -> updateStock();
+                case 4 -> removeProduct();
+                case 5 -> {
+                    System.out.println("\nExiting system. Thank you!");
+                    scanner.close();
+                    System.exit(0);
+                }
+                default -> System.out.println("Invalid option! Please choose between 1 and 5.");
+            }
+        }
+    }
+
+    private static void displayMenu() {
+        System.out.println("\n---------------------------------");
+        System.out.println("1. Add New Product");
+        System.out.println("2. View All Products");
+        System.out.println("3. Update Product Stock / Price");
+        System.out.println("4. Delete a Product");
+        System.out.println("5. Exit Application");
+        System.out.println("---------------------------------");
+    }
+
+    private static void addProduct() {
+        System.out.print("\nEnter product name: ");
+        String name = scanner.nextLine().trim();
+        if (name.isEmpty()) {
+            System.out.println("Error: Product name cannot be blank.");
+            return;
+        }
+
+        int quantity = getValidInteger("Enter product quantity: ");
+        if (quantity < 0) {
+            System.out.println("Error: Quantity cannot be negative.");
+            return;
+        }
+
+        double price = getValidDouble("Enter product price: $");
+        if (price < 0) {
+            System.out.println("Error: Price cannot be negative.");
+            return;
+        }
+
+        Product newProduct = new Product(idCounter++, name, quantity, price);
+        inventory.add(newProduct);
+        System.out.println("Success: Product added matching ID " + newProduct.getId());
+    }
+
+    private static void viewInventory() {
+        System.out.println("\n================ Current Inventory ================");
+        if (inventory.isEmpty()) {
+            System.out.println("The inventory is currently empty.");
+        } else {
+            for (Product p : inventory) {
+                System.out.println(p);
+            }
+        }
+        System.out.println("===================================================");
+    }
+
+    private static void updateStock() {
+        int id = getValidInteger("\nEnter the Product ID to update: ");
+        Product product = findProductById(id);
+
+        if (product == null) {
+            System.out.println("Error: Product ID not found.");
+            return;
+        }
+
+        System.out.println("Updating details for: " + product.getName());
+        int newQty = getValidInteger("Enter new quantity: ");
+        double newPrice = getValidDouble("Enter new price: $");
+
+        if (newQty >= 0 && newPrice >= 0) {
+            product.setQuantity(newQty);
+            product.setPrice(newPrice);
+            System.out.println("Success: Product details updated successfully.");
+        } else {
+            System.out.println("Error: Values cannot be negative. Update aborted.");
+        }
+    }
+
+    private static void removeProduct() {
+        int id = getValidInteger("\nEnter the Product ID to remove: ");
+        Product product = findProductById(id);
+
+        if (product == null) {
+            System.out.println("Error: Product ID not found.");
+            return;
+        }
+
+        inventory.remove(product);
+        System.out.println("Success: '" + product.getName() + "' has been deleted.");
+    }
+
+    private static Product findProductById(int id) {
+        for (Product p : inventory) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    private static int getValidInteger(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                int value = scanner.nextInt();
+                scanner.nextLine(); // Clear scanner buffer
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a whole number.");
+                scanner.nextLine(); // Clear incorrect token
+            }
+        }
+    }
+
+    private static double getValidDouble(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                double value = scanner.nextDouble();
+                scanner.nextLine(); // Clear scanner buffer
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a valid decimal number.");
+                scanner.nextLine(); // Clear incorrect token
+            }
+        }
+    }
+}
